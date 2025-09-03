@@ -36,7 +36,7 @@ const setTextareaStyle = (attrib, v) => (pageEl.style[attrib] = v);
 // 初始化字体选项
 document.addEventListener('DOMContentLoaded', () => {
   const fontSelect = document.querySelector('#handwriting-font');
-  fonts.forEach(font => {
+  fonts.forEach((font) => {
     const option = document.createElement('option');
     option.value = font;
     option.textContent = font;
