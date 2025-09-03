@@ -1,7 +1,8 @@
 import {
   addFontFromFile,
   formatText,
-  addPaperFromFile
+  addPaperFromFile,
+  fonts
 } from './utils/helpers.mjs';
 import {
   generateImages,
@@ -32,6 +33,17 @@ const setTextareaStyle = (attrib, v) => (pageEl.style[attrib] = v);
 /**
  * Add event listeners here, they will be automatically mapped with addEventListener later
  */
+// 初始化字体选项
+document.addEventListener('DOMContentLoaded', () => {
+  const fontSelect = document.querySelector('#handwriting-font');
+  fonts.forEach(font => {
+    const option = document.createElement('option');
+    option.value = font;
+    option.textContent = font;
+    fontSelect.appendChild(option);
+  });
+});
+
 const EVENT_MAP = {
   '#generate-image-form': {
     on: 'submit',
@@ -42,8 +54,10 @@ const EVENT_MAP = {
   },
   '#handwriting-font': {
     on: 'change',
-    action: (e) =>
-      document.body.style.setProperty('--handwriting-font', e.target.value)
+    action: (e) => {
+      document.body.style.setProperty('--handwriting-font', e.target.value);
+      document.querySelector('.page-a').style.fontFamily = e.target.value;
+    }
   },
   '#font-size': {
     on: 'change',

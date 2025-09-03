@@ -1,5 +1,6 @@
 const pageEl = document.querySelector('.page-a');
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+export const fonts = ['Hindi_Type', '爱你黄昏'];
 
 function addFontFromFile(fileObj) {
   const reader = new FileReader();
